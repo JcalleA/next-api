@@ -1,65 +1,94 @@
 'use client';
 
 
-import { Product } from "@/interfaces";
+import { Variation } from "@/interfaces";
 import { CartState } from "@/store";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { IoIosCloseCircle } from "react-icons/io";
-
-
+import { Spinner } from 'theme-ui'
 
 interface Props {
-    products: Product[]
+    products: Variation[]
 }
-
 
 export const Cart = () => {
 
-    const [products, setCartProducts] = useState<Product[]>([])
-
-    const stateCart = CartState(state => state.CartId)
-    const itemsInCart = CartState(state => state.setCartItems)
     const [mensajeCart, setmensajeCart] = useState('Carrito Vacio')
-
+    const [Data, setData] = useState<Variation[]>()
+    const itemsinCart=CartState(state=>state.CartItems)
+    const setCartItems = CartState(state => state.setCartItems)
+    const cartLoad = CartState(state => state.CartLoad)
+    const setCartLoad = CartState(state => state.setCartLoad)
 
     useEffect(() => {
-        fetch(`${process.env.NEXT_PUBLIC_APIURL}/api/getcartproducts`)
-            .then((res) => res.json())
-            .then((data) => {
-                setCartProducts(data)
-                itemsInCart(data.length)
-                if (products[0]) {
-                    setmensajeCart('')
-                } else {
-                    setmensajeCart('Carrito Vacio')
-                }
+        const produts = localStorage.getItem('products')!
+        const listaParsed=JSON.parse(produts)
+        setCartItems(listaParsed.length)
+    }, [])
 
+    useEffect(() => {
+        const produts = localStorage.getItem('products')!
+        const listaParsed=JSON.parse(produts)
+        setData(listaParsed)
+    }, [itemsinCart])
+    
+    useEffect(() => {
+        
+        if (Data?.length!=0) {
+            setmensajeCart('')
+            setCartLoad(false)
+            if (Data?.length!=undefined) {
+                setCartItems(Data.length)
+            }
+            
+        } else {
+            setmensajeCart('Carrito Vacio---')
+            setCartLoad(false)
+            
+        }
+    }, [Data])
 
-            })
-    }, [itemsInCart, products, stateCart])
+    const delCartItem = (id: number) => {
+        const produts = localStorage.getItem('products')!
+        const listaParsed=JSON.parse(produts)
+        listaParsed.splice(id, 1)
+        localStorage.setItem('products', JSON.stringify(listaParsed))
+        setData(listaParsed)
+        setCartItems(listaParsed.length)
+    }
 
 
     return (
         <div className="">
-
             {
-                products && (
-                    products.map((product:Product) => (
-                        <div key={products.indexOf(product)} className=" flex ">
+                Data && (
+                    Data.map((product: Variation) => (
+                        <div key={Data.indexOf(product)} className=" flex ">
                             <Image
-                                src={product.img}
+                                src={product.image.src}
                                 width={65}
                                 height={65}
                                 alt={""} />
-                                <IoIosCloseCircle 
+                                <h4>{product.name}</h4>
+                            <IoIosCloseCircle
                                 className="  my-auto w-[10%]  h-full text-rose-300"
-                                onClick={()=>fetch(`${process.env.NEXT_PUBLIC_APIURL}/api/delcartproduct?id=${products.indexOf(product)}`)}
-                                />
+                                onClick={() => {
+                                    setCartLoad(true)
+                                    delCartItem(Data.indexOf(product))}}
+                            />
                         </div>
                     ))
                 )
             }
+            <div className="flex gap-4">
+                {
+                    cartLoad && (
+                        <Spinner style={{color:'#f7cbf7'}}/>
+                    )
+                }
+
+            </div>
             <h3 className=" text-center text-4xl mt-10 text-slate-50">{mensajeCart}</h3>
         </div>
     )

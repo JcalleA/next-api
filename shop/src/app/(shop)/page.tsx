@@ -12,7 +12,6 @@ export default async function Home() {
   const res = await api.get("products")
   const { data } = res
   
-  
   return (
     <div className="flex min-h-screen flex-col items-center justify-between p-5">
       <ProductsGrid products={data} />

@@ -61,7 +61,7 @@ export interface Product {
   images: Image[];
   attributes: Attribute[];
   default_attributes: any[]; // TODO look at default attributes properties
-  variations: number[];
+  variations: Variation[];
   grouped_products: number[];
   menu_order: number;
   meta_data: MetaDatum[];
@@ -281,6 +281,7 @@ export interface Shipping {
   email: string;
 }
 
+
 export interface Variation {
   id: number;
   date_created: Date;
@@ -322,6 +323,7 @@ export interface Variation {
   menu_order: number;
   meta_data: MetaData[];
   _links: Links;
+  name:string;
 }
 
 export interface Self {

@@ -19,8 +19,9 @@ export const SliderImg = ({ images, atributos, id }: Props) => {
     const [Talla, setTalla] = useState('Unica')
     const [color, setcolor] = useState(2)
     const imagenes=images.slice(1);
-    const setCart = CartState(state => state.setCartlId)
-    const state = CartState(state => state.CartId)
+    const cartLoad = CartState(state => state.CartLoad)
+    const setCartLoad = CartState(state => state.setCartLoad)
+    const setCartItems = CartState(state => state.setCartItems)
     const openMenu=useStore(state=>state.openMenu)
 
     const position =(num:number,dir:string)=>{
@@ -34,12 +35,29 @@ export const SliderImg = ({ images, atributos, id }: Props) => {
             setcolor(color+num)
         }
     }
-    const reloadCart = () => {
-        if (state === true) {
-            setCart(false)
+    
+    const setItemLocal= async (id:number,variante:string)=>{
+        
+        const itemsInLocal=localStorage.getItem('products')
+        if (itemsInLocal) {
+            const itemsParsed=JSON.parse(itemsInLocal)
+            await fetch(`${process.env.NEXT_PUBLIC_APIURL}/api/setcartproduct?id=${id}&Var=${variante}`)
+            .then(res=>res.json())
+            .then(res=>{
+                
+                itemsParsed.push(res)
+                localStorage.setItem('products',JSON.stringify(itemsParsed))
+                setCartItems(itemsParsed.length)
+                
+            })
         } else {
-            setCart(true)
+            await fetch(`${process.env.NEXT_PUBLIC_APIURL}/api/setcartproduct?id=${id}&Var=${variante}`)
+            .then(res=>res.json())
+            .then(res=>{
+                localStorage.setItem('products',JSON.stringify([res]))
+            })
         }
+        
     }
 
     return (
@@ -121,10 +139,9 @@ export const SliderImg = ({ images, atributos, id }: Props) => {
                 <button
                     className=" flex text-white align-middle my-auto p-2 bg-rose-300 border-2 mb-3 rounded-xl"
                     onClick={() => {
-                        fetch(`${process.env.NEXT_PUBLIC_APIURL}/api/setcartproduct?id=${id}&variante=${imagenes[color!].name}, ${Talla}`);
-                        reloadCart()
+                        setItemLocal(id,`${imagenes[color!].name}, ${Talla}`)
+                        setCartLoad(true)
                         openMenu()
-                        
                     }}
                 >Agregar Al Carrito
                     <MdOutlineAddShoppingCart

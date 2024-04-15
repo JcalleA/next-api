@@ -169,7 +169,8 @@ export interface Image {
 export interface Attribute {
   id: number;
   name: string;
-  options: string[];
+  option: string;
+  options:string[]
 }
 
 

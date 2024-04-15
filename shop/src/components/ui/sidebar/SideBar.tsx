@@ -16,7 +16,7 @@ interface Props {
 }
 
 
-export const SideBar =  ({ products}: Props) => {
+export const SideBar =  () => {
 
     
     const isMenuOpen = useStore(state => state.isMenuOpen)
@@ -24,11 +24,6 @@ export const SideBar =  ({ products}: Props) => {
     const closeMenu = useStore(state => state.closeMenu)
     const closeModal = useStore(state => state.closeModal)
     
-
-
-    
-    
-
 
     return (
         <div>

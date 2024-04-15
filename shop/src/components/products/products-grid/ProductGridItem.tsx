@@ -10,10 +10,11 @@ import { useState } from "react";
 
 
 interface Props {
-  product: Product;
+  product: Product,
+  id:number
 }
 
-export const ProductGridItem = ({ product }: Props) => {
+export const ProductGridItem = ({ product,id }: Props) => {
 
   const isModalOpen=useStore(state=>state.isModalOpen)
 
@@ -33,7 +34,7 @@ export const ProductGridItem = ({ product }: Props) => {
           onMouseEnter={() => setdiplayImage(product.images[1].src)}
           onMouseLeave={() => setdiplayImage(product.images[0].src)}
           onClick={()=>{
-            setModalId(product.id)
+            setModalId(id)
             openModal()
           }}
         />

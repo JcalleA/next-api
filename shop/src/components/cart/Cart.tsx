@@ -22,14 +22,18 @@ export const Cart = () => {
     const setCartLoad = CartState(state => state.setCartLoad)
 
     useEffect(() => {
-        const produts = localStorage.getItem('products')!
-        const listaParsed=JSON.parse(produts)
-        setCartItems(listaParsed.length)
+        const products = localStorage.getItem('products')!
+        if (products) {
+            const listaParsed=JSON.parse(products)
+            setCartItems(listaParsed.length)
+        } else {
+            setCartItems(0)
+        }
     }, [])
 
     useEffect(() => {
-        const produts = localStorage.getItem('products')!
-        const listaParsed=JSON.parse(produts)
+        const products = localStorage.getItem('products')!
+        const listaParsed=JSON.parse(products)
         setData(listaParsed)
     }, [itemsinCart])
     

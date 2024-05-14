@@ -1,12 +1,15 @@
 import type { Metadata } from "next";
 import { inter } from "@/config/fonts";
 import "./globals.css";
+import { Suspense } from 'react'
+import { Pixelfacebook } from "@/components/pixel/Pixelfacebook";
+
 
 
 
 
 export const metadata: Metadata = {
-  title: "Shop",
+  title: "Bin You",
   description: "Tienda Ecommerce",
 };
 
@@ -17,7 +20,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} text-neutral-950`}>{children}</body>
+      <body className={`${inter.className} text-neutral-950`}>
+        <Suspense fallback={null}>
+          {children}
+          <Pixelfacebook />
+        </Suspense>
+      </body>
     </html>
   );
 }

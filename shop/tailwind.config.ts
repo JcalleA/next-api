@@ -11,8 +11,19 @@ const config: Config = {
       animation:{
         "pulse-fade-in": "pulse-fade-in 0.6s ease-out",
         "blurred-fade-in": "blurred-fade-in 0.4s ease-in-out",
+        "rotate-in": "rotate-in 0.6s ease-out",
       },
       keyframes:{
+        "rotate-in": {
+          "0%": {
+            "opacity": "0",
+            "transform": "rotate(-90deg)"
+          },
+          "100%": {
+            "opacity": "1",
+            "transform": "rotate(0deg)"
+          }
+        },
         "blurred-fade-in": {
           "0%": {
             "filter": "blur(5px)",

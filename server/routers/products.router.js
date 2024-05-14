@@ -6,8 +6,12 @@ const router = express.Router()
 
 
 
-router.get('/setproduct/:id/:variation', producController.setProduct);
+router.get('/getvariants/', producController.getVariants);
 router.get('/list', producController.getProducts);
+router.get('/listShipingMethods', producController.listShipingMethods);
+
+
+router.post('/createorder',producController.createOrder)
 
 
 

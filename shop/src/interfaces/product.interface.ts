@@ -305,6 +305,7 @@ export interface Variation {
   virtual: boolean;
   downloadable: boolean;
   downloads: any[];
+  parent_id:number;
   download_limit: number;
   download_expiry: number;
   tax_status: string;

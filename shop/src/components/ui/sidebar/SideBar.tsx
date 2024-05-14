@@ -5,6 +5,7 @@ import {  useStore } from "@/store"
 import clsx from "clsx";
 import { Cart } from "@/components/cart/Cart";
 import { Product } from "@/interfaces";
+import { useRouter, useSearchParams } from 'next/navigation'
 
 
 
@@ -15,24 +16,22 @@ interface Props {
     
 }
 
-
 export const SideBar =  () => {
 
+    const router = useRouter()
+    const searchParams = useSearchParams()
+    const isMenuOpen = searchParams.get('showmenu')
+    const isModalOpen = searchParams.get('showmodal')
     
-    const isMenuOpen = useStore(state => state.isMenuOpen)
-    const isModalOpen = useStore(state => state.isModalOpen)
-    const closeMenu = useStore(state => state.closeMenu)
-    const closeModal = useStore(state => state.closeModal)
     
-
     return (
         <div>
             {
                 (isMenuOpen || isModalOpen) && (
                     <div
                         onClick={() => {
-                            closeModal()
-                            closeMenu()
+                            
+                            router.back()
 
                         }}
                     >
@@ -49,7 +48,7 @@ export const SideBar =  () => {
             {/* Side Cart*/}
             <div className={
                 clsx(
-                    'fixed p-5 right-0 top-0 w-[356px] sm:w-[500px]  h-screen bg-slate-500 z-20 shadow-2xl transform transition-all duration-300',
+                    'fixed p-5 right-0 top-0 w-[95%] sm:w-[500px]  h-screen bg-gradient-to-r from-teal-700 to-cyan-700 z-40 shadow-2xl transform transition-all duration-500',
                     {
                         "translate-x-full": !isMenuOpen
                     }
@@ -57,16 +56,10 @@ export const SideBar =  () => {
             }>
                 <LiaWindowCloseSolid
                     className=" absolute w-10 h-10 text-white right-0 cursor-pointer"
-                    onClick={() => closeMenu()}
+                    onClick={router.back}
                 />
-                
                         <Cart />
-                    
-                
-
             </div>
-
         </div >
-
     )
 }

@@ -3,37 +3,26 @@
 import ProductsGrid from "@/components/products/products-grid/ProductsGrid";
 import { SideBar } from "@/components";
 import { api } from "../config/wooapi";
-import { Product, Variation } from "@/interfaces";
+import { Checkout } from "@/components/checkout/Checkout"; 
+import { Mensaje } from "@/components/mensajes/Mensaje";
 
 
 
-async function getData() {
-  const variationsLis:any=[]
-  await api.get('products')
-  .then(res=>{
-    const {data}=res
-    data.map(async (element: Product)=> {
-      await api.get(`products/${element.id}/variations`)
-      .then(res=>variationsLis.push(res))
-  })
-  })
-  const res2=await api.get('products')
-  const {data}=res2
-  console.log(data,variationsLis);
-  
-  return {datos:data,
-    variations:variationsLis
-  }
-}
 
 export default async function Home() {
-  const datos=await getData()
+  
+  const products= await api.get('products')
+  const variantesList= await fetch(`http://localhost:4000/products/getvariants`)
+  const variantes= await variantesList.json()
+  
   
   
   return (
-    <div className="flex min-h-screen flex-col items-center justify-between p-5">
-      <ProductsGrid products={datos.datos} variantes={datos.variations}/>
+    <div className=" min-h-screen flex-col items-center justify-between">
+      <Mensaje/>
+      <ProductsGrid products={products.data} variantes={variantes}/>
       <SideBar/>
+      <Checkout/>
     </div>
   )
 }

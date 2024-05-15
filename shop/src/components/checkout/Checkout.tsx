@@ -247,7 +247,7 @@ export const Checkout = () => {
     const submit = () => {
 
         setLoadCheckout(true)
-        fetch('http://localhost:4000/products/createorder', {
+        fetch(`${process.env.NEXT_PUBLIC_APIURL}/products/createorder`, {
             method: "POST", // or 'PUT'
             headers: {
                 "Content-Type": "application/json",

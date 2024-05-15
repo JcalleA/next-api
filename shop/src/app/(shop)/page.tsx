@@ -18,7 +18,7 @@ export default async function Home() {
   
   
   return (
-    <div className=" min-h-screen flex-col items-center justify-between">
+    <div className=" min-h-screen flex-col items-center justify-between ">
       <Mensaje/>
       <ProductsGrid products={products.data} variantes={variantes}/>
       <SideBar/>

@@ -12,7 +12,7 @@ import { Mensaje } from "@/components/mensajes/Mensaje";
 export default async function Home() {
   
   const products= await api.get('products')
-  const variantesList= await fetch(`http://localhost:4000/products/getvariants`)
+  const variantesList= await fetch(`${process.env.NEXT_PUBLIC_APIURL}/products/getvariants`)
   const variantes= await variantesList.json()
   
   

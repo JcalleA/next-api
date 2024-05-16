@@ -43,7 +43,7 @@ const ProductsGrid = ({products,variantes}:Props) => {
 
   return (
     <div className=" mt-7 mb-10">
-      <div className={ `${animation} fixed bottom-1 right-0  w-[5%] mr-9 z-30` }>
+      <div className={ `${animation} fixed animate-cart_saltar bottom-1 right-0  w-[5%] mr-9 z-30` }>
                     <Link 
                     className=" w-auto m-0 p-0"
                     href="/?showmenu=true"

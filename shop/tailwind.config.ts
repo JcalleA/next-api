@@ -9,11 +9,25 @@ const config: Config = {
   theme: {
     extend: {
       animation:{
+        "cart_saltar":"cart_saltar 8s infinite ",
         "pulse-fade-in": "pulse-fade-in 0.6s ease-out",
         "blurred-fade-in": "blurred-fade-in 0.4s ease-in-out",
         "rotate-in": "rotate-in 0.6s ease-out",
       },
       keyframes:{
+
+        "cart_saltar":{
+          "0%":{"transform": "rotate(5deg)"},
+          "2%":{"transform": "rotate(-5deg)"},
+          "4%":{"transform": "rotate(5deg)"},
+          "6%":{"transform": "rotate(-5deg)"},
+          "8%":{"transform": "rotate(5deg)"},
+          "10%":{"transform": "rotate(-5deg)"},
+          "12%":{"transform": "rotate(0deg)"},
+          "100%":{"transform": "rotate(0deg)"},
+        },
+
+
         "rotate-in": {
           "0%": {
             "opacity": "0",

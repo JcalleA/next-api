@@ -11,7 +11,7 @@ export const TopMenu = () => {
     const openMenu = useStore(state => state.openMenu)
     const itemsInCart = CartState(state => state.CartItems)
     return (
-        <nav className=" justify-center bg-gradient-to-r from-teal-400 to-cyan-400">
+        <nav className=" justify-center  bg-gradient-radial from-teal-500 to-teal-600">
             
             <div className=" flex w-full sm:w-[70%] sm:mx-auto items-center  justify-between " >
                 <div className="  ">

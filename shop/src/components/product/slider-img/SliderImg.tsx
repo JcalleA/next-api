@@ -73,7 +73,7 @@ export const SliderImg = ({ product, variantes }: Props) => {
         <div>
             <div>
             
-                <div className="  relative ">
+                <div className="  relative mt-3">
                     <FaCircleArrowLeft
                         className=" text-rose-300 w-7 h-7 absolute my-auto inset-y-0 z-10"
                         onClick={() => position(-1, 'izq')}
@@ -82,7 +82,7 @@ export const SliderImg = ({ product, variantes }: Props) => {
                         Variantes &&
                         Variantes.map(elemen => (
                             <div
-                                className=" relative mt-3 "
+                                className=" relative "
                                 key={Variantes.indexOf(elemen)}>
                                 {
                                     elemen.stock_quantity === 0 && (
@@ -126,6 +126,9 @@ export const SliderImg = ({ product, variantes }: Props) => {
                     />
                 </div>
                 <div className=" text-center m-1">
+                    <div>
+                        <h2 className=" font-bold">{product.name}</h2>
+                    </div>
                     <div>
                         <span className=" text-yellow-400 font-bold text-xl ">★★★★★</span>
                     </div>

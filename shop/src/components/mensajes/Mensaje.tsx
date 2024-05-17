@@ -8,7 +8,7 @@ export const Mensaje = () => {
 
 
   return (
-    <div className=" relative w-[95%] mx-auto mt-1 sm:w-[80%]">
+    <div className=" relative w-[95%] mx-auto mt-1 sm:w-[70%]">
         <Image
         className=" rounded-lg"
         src={"/imgs/PROMO.png"} 

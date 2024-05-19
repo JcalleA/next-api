@@ -212,12 +212,12 @@ export const Cart = () => {
                             onClick={()=>initalCheckouttEvent(TotalPedido - Descuento+Envio)}>
                             <button
                                 className={
-                                    clsx(" flex  items-center px-2 py-3 bg-rose-300 hover:bg-rose-400 border-2 rounded-full",
+                                    clsx(" flex items-center px-2 py-3 bg-rose-300 hover:bg-rose-400 border-2 rounded-full",
                                     {' hidden' : itemsinCart===0}
                                     )
                                 }
                                 
-                            >Compra y Paga en Casa
+                            >Compra<br></br> Paga en Casa
                                 <MdOutlineFactCheck
                                     className=" w-7 h-7 text-black ml-2" />
                             </button>

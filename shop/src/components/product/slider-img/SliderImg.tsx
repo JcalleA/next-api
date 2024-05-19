@@ -11,6 +11,7 @@ import Link from "next/link";
 
 
 
+
 interface Props {
     product: Product,
     variantes: Variation[]
@@ -19,8 +20,10 @@ interface Props {
 const addToCartEvent = async () => {
     const { default: ReactPixel } = await import("react-facebook-pixel");
     ReactPixel.init(process.env.NEXT_PUBLIC_PIXELID!);
-    ReactPixel.track("AddToCart", {currency: "COP", value: 25000});
-    }
+    ReactPixel.track("AddToCart", { currency: "COP", value: 25000 });
+}
+
+
 
 export const SliderImg = ({ product, variantes }: Props) => {
 
@@ -30,16 +33,37 @@ export const SliderImg = ({ product, variantes }: Props) => {
     const [color, setcolor] = useState(2)
     const setCartLoad = CartState(state => state.setCartLoad)
     const setCartItems = CartState(state => state.setCartItems)
-    
+    const CartItems = CartState(state => state.CartItems)
+    const [touchStart, settouchStart] = useState(0)
+    const [touchEnd, settouchEnd] = useState(0)
+    const [popup, setpopup] = useState('hidden')
+    const [mensajePopup, setmensajePopup] = useState('')
+
 
     const variantesList = (name: string) => {
         const varianFiltered = variantes.filter(element => element.attributes[1].option === name)
         setVariantes(varianFiltered)
     }
 
+    const handlePopup = () => {
+
+        if (CartItems + 1 < 3) {
+
+            setmensajePopup(`Agrega ${3 - (CartItems + 1)} más para obtener envio gratis`);
+            setpopup(' absolute -mt-20 bg-white opacity-75 rounded-md px-4 py-2 ')
+            setTimeout(() => {
+                setpopup('hidden')
+            }, 2000);
+        } else {
+            setmensajePopup('')
+        }
+
+    }
+
     useEffect(() => {
         setVariantes(variantes.filter(element => element.attributes[1].option === element.attributes[1].option[0]))
     }, [variantes])
+
 
     const position = (num: number, dir: string) => {
         const numeros = Variantes!.length
@@ -49,6 +73,18 @@ export const SliderImg = ({ product, variantes }: Props) => {
             setcolor(numeros - 1)
         } else {
             setcolor(color + num)
+        }
+    }
+    const handleChangeImg = (posInitx: number, posEndx: number) => {
+
+        if (posInitx - posEndx >= 25) {
+            position(-1, 'izq')
+            settouchStart(posEndx)
+        }
+        if (posInitx - posEndx <= -25) {
+            position(1, 'der')
+
+            settouchStart(posEndx)
         }
     }
 
@@ -68,12 +104,12 @@ export const SliderImg = ({ product, variantes }: Props) => {
         }
     }
 
-
     return (
         <div>
+
             <div>
-            
-                <div className="  relative mt-3">
+
+                <div className="   relative mt-3">
                     <FaCircleArrowLeft
                         className=" text-rose-300 w-7 h-7 absolute my-auto inset-y-0 z-10"
                         onClick={() => position(-1, 'izq')}
@@ -145,14 +181,26 @@ export const SliderImg = ({ product, variantes }: Props) => {
                         }
                     </div>
                 </div>
-                <div className=" flex w-[70%] mx-auto justify-center mt-2">
+                <h4 className=" text-center text-xl font-semibold">Selecciona una Color</h4>
+                <div className=" flex w-[100%] mx-auto justify-center mt-2"
+
+                    onTouchStart={(e) => {
+                        settouchStart(e.touches[0].clientX)
+                    }}
+                    onTouchMove={(e) => {
+                        settouchEnd(e.touches[0].clientX)
+                        handleChangeImg(touchStart, touchEnd)
+                    }}
+
+                >
+
                     {Variantes &&
                         Variantes.map(element => (
                             <Image
                                 key={Variantes!.indexOf(element)}
                                 className={
-                                    clsx("  w-[10%] rounded-lg  object-cover ",
-                                        { " opacity-100 w-[35%] border-2 border-rose-300 animate-pulse-fade-in": Variantes.indexOf(element) == color },
+                                    clsx("  w-[18%] rounded-lg  object-cover ",
+                                        { " opacity-100 w-[36%] border-2 border-rose-300 animate-pulse-fade-in": Variantes.indexOf(element) == color },
                                         { " opacity-40  ": Variantes!.indexOf(element) != color },
                                         { " grayscale": element.stock_quantity === 0 }
                                     )
@@ -164,29 +212,15 @@ export const SliderImg = ({ product, variantes }: Props) => {
                                 onMouseEnter={() => {
                                     setcolor(Variantes!.indexOf(element))
                                 }}
-                                onTouchMove={() => {
-                                    setcolor(Variantes!.indexOf(element))
-                                }}
-                                onTouchMoveCapture={() => {
-                                    setcolor(Variantes!.indexOf(element))
-                                }}
-                                
+
+
+
                             />
                         ))
                     }
                 </div>
             </div>
-            {
-                Variantes && (
-                    <h3
-                        className=" text-xl font-bold mt-3 text-center"
-                    >
-                        <span className="  border-2 border-white rounded-full px-3 py-1 ml-1">
-                            {Variantes![color!].name}
-                        </span>
-                    </h3>
-                )
-            }
+
             <div className=" my-2 text-xl font-bold mt-3 text-center">
                 <h4 className=" font-semibold">Selecciona una Talla</h4>
                 <div className=" flex mt-3 w-full justify-center">
@@ -213,6 +247,17 @@ export const SliderImg = ({ product, variantes }: Props) => {
                     }
                 </div>
             </div>
+            {
+                Variantes && (
+                    <h3
+                        className=" text-xl font-bold mt-3 text-center"
+                    >
+                        <span className="  border-2 border-white rounded-full px-3 py-1 ml-1">
+                            {Variantes![color!].name}
+                        </span>
+                    </h3>
+                )
+            }
             <div className="font-bold text-xl flex align-middle my-auto mt-3">
                 {
                     Variantes && (
@@ -227,7 +272,10 @@ export const SliderImg = ({ product, variantes }: Props) => {
                                 <MdOutlineAddShoppingCart
                                     className=" w-8 h-8 text-black" />
                             </button>
-                            
+                            <div className={popup}
+                            onClick={()=>setpopup('hidden')}>
+                                <span>{mensajePopup}</span>
+                            </div>
                             <button
                                 className={
                                     clsx(" flex mx-auto align-middle my-auto px-4 py-2 bg-rose-300 hover:bg-rose-400 border-2 mb-3 rounded-full",
@@ -238,15 +286,13 @@ export const SliderImg = ({ product, variantes }: Props) => {
                                     addToCartEvent()
                                     setItemLocal()
                                     setCartLoad(true)
+                                    handlePopup()
                                 }}
-                                
                             >Agregar Al Carrito
                                 <MdOutlineAddShoppingCart
                                     className=" w-8 h-8 text-black" />
                             </button>
-                            <Link className= " mx-auto w-fit rounded-full  p-1 flex justify-center border-2 border-rose-800 align-middle items-center mb-4  text-rose-800 underline" href={"/?showmenu=true"}>Ver Carrito</Link>
-                            
-                            
+                            <Link className=" mx-auto w-fit rounded-full  p-1 flex justify-center border-2 border-rose-800 align-middle items-center mb-4  text-rose-800 underline" href={"/?showmenu=true"}>Ver Carrito</Link>
                         </div>
                     )
                 }

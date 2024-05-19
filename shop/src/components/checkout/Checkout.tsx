@@ -441,7 +441,7 @@ export const Checkout = () => {
                             type="submit"
 
                             className=" flex justify-center font-extrabold text-xl mx-auto items-center px-2 py-3 bg-rose-300 hover:bg-rose-400 border-2 rounded-full"
-                        >Finalizar Compra
+                        >Finalizar Pedido
                             <MdOutlineFactCheck
                                 className=" w-7 h-7 text-black ml-2" />
 

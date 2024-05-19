@@ -1,4 +1,4 @@
-
+import Image from "next/image";
 
 export const Footer = () => {
     const year=new Date();
@@ -8,8 +8,14 @@ export const Footer = () => {
         <div className="container mx-auto px-6 text-center">
             <h2 className="text-3xl font-bold text-gray-800">Envíos a toda Colombia</h2>
             <p className="text-lg text-gray-600 mt-4">Recibe tus productos en cualquier parte del país con nuestros servicios de envío confiables.</p>
-            <div className="mt-8 flex justify-center">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Colombia.svg" alt="Bandera de Colombia" className="w-32 h-auto"/>
+            <div className="w-[50%] mx-auto mt-8 flex justify-center">
+              <Image src={"https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Colombia.svg"} 
+              alt={"Bandera de Colombia"}
+              width={300}
+              height={300}
+              className="w-auto h-auto rounded-xl"
+              />
+                
             </div>
         </div>
     </section>
@@ -19,12 +25,14 @@ export const Footer = () => {
         <p className="text-lg text-gray-600 mt-4">
           Ahora puedes pagar tus compras al recibir tu pedido, sin complicaciones.
         </p>
-        <div className="mt-8 flex justify-center">
-          <img
-            src="https://img.freepik.com/foto-gratis/hermosa-mujer-firma-paquete_23-2147787845.jpg"
-            alt="Pago Contra Entrega"
-            className="w-80 h-auto rounded-xl"
-          />
+        <div className=" w-[70%] mx-auto mt-8 flex justify-center">
+          
+          <Image src={"https://img.freepik.com/foto-gratis/hermosa-mujer-firma-paquete_23-2147787845.jpg"} 
+              alt={"Pago Contra Entrega"}
+              width={300}
+              height={300}
+              className="w-auto h-auto rounded-xl"
+              />
         </div>
       </div>
     </section>
@@ -34,12 +42,13 @@ export const Footer = () => {
         <p className="text-lg text-gray-600 mt-4">
           Descubre las cualidades únicas de nuestras prendas.
         </p>
-        <div className="mt-8 flex justify-center">
-          <img
-            src="https://img.freepik.com/fotos-premium/textura-ondas-tela-tela-seda-roja_133187-1576.jpg"
-            alt="Blusa Tela Piel de Durazno"
-            className="w-70 h-auto rounded-xl"
-          />
+        <div className=" w-[70%] mx-auto mt-8 flex justify-center">
+          <Image src={"https://img.freepik.com/fotos-premium/textura-ondas-tela-tela-seda-roja_133187-1576.jpg"} 
+              alt={"Blusa Tela Piel de Durazno"}
+              width={200}
+              height={200}
+              className="w-auto h-auto rounded-xl"
+              />
         </div>
         <ul className="mt-8 text-left max-w-2xl mx-auto">
           <li className="text-lg text-gray-600 mt-2">

@@ -217,7 +217,7 @@ export const Cart = () => {
                                     )
                                 }
                                 
-                            >Finalizar Compra
+                            >Compra y Paga en Casa
                                 <MdOutlineFactCheck
                                     className=" w-7 h-7 text-black ml-2" />
                             </button>
@@ -227,7 +227,7 @@ export const Cart = () => {
                                 className=" text-xl mr-4 bg-green-400 rounded-lg px-2"
                             >Total
                                 <br />
-                                ${new Intl.NumberFormat().format(TotalPedido - Descuento )}
+                                ${new Intl.NumberFormat().format(TotalPedido - Descuento+Envio )}
                             </h5>
                         </div>
                     </div>

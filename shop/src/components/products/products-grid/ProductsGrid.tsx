@@ -55,7 +55,7 @@ const ProductsGrid = ({products,variantes}:Props) => {
                 </div>
       {
         productsList && (
-          <div className=" grid gap-y-2 grid-cols-2 sm:grid-cols-3  animate-[pulse_2s_cubic-bezier(0.4,0,0.6,1)]">
+          <div className=" grid gap-y-3 grid-cols-2 sm:grid-cols-3  animate-[pulse_2s_cubic-bezier(0.4,0,0.6,1)]">
             {
               productsList.map((product: Product) => (
                 <ProductGridItem key={product.id} product={product} id={products.indexOf(product)}/>

@@ -20,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} text-neutral-950  bg-gradient-radial  from-slate-300 to-slate-500 `}>
+      <body className={`${inter.className} text-neutral-950  bg-gradient-radial  from-slate-200 to-slate-300 `}>
         <Suspense fallback={null}>
           {children}
           <Pixelfacebook />

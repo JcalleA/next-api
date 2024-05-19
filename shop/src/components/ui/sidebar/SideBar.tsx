@@ -1,7 +1,6 @@
 'use client';
 
 import { LiaWindowCloseSolid } from "react-icons/lia"
-import {  useStore } from "@/store"
 import clsx from "clsx";
 import { Cart } from "@/components/cart/Cart";
 import { Product } from "@/interfaces";

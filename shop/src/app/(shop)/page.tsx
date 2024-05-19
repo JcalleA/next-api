@@ -5,6 +5,7 @@ import { SideBar } from "@/components";
 import { api } from "../config/wooapi";
 import { Checkout } from "@/components/checkout/Checkout"; 
 import { Mensaje } from "@/components/mensajes/Mensaje";
+import { Footer } from "@/components/ui/footer/Footer";
 
 
 
@@ -23,6 +24,7 @@ export default async function Home() {
       <ProductsGrid products={products.data} variantes={variantes}/>
       <SideBar/>
       <Checkout/>
+      <Footer/>
     </div>
   )
 }

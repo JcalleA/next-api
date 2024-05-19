@@ -164,6 +164,13 @@ export const SliderImg = ({ product, variantes }: Props) => {
                                 onMouseEnter={() => {
                                     setcolor(Variantes!.indexOf(element))
                                 }}
+                                onTouchMove={() => {
+                                    setcolor(Variantes!.indexOf(element))
+                                }}
+                                onTouchMoveCapture={() => {
+                                    setcolor(Variantes!.indexOf(element))
+                                }}
+                                
                             />
                         ))
                     }
@@ -173,7 +180,7 @@ export const SliderImg = ({ product, variantes }: Props) => {
                 Variantes && (
                     <h3
                         className=" text-xl font-bold mt-3 text-center"
-                    >color/talla:
+                    >
                         <span className="  border-2 border-white rounded-full px-3 py-1 ml-1">
                             {Variantes![color!].name}
                         </span>
@@ -181,7 +188,7 @@ export const SliderImg = ({ product, variantes }: Props) => {
                 )
             }
             <div className=" my-2 text-xl font-bold mt-3 text-center">
-                <h4>Tallas Disponibles</h4>
+                <h4 className=" font-semibold">Selecciona una Talla</h4>
                 <div className=" flex mt-3 w-full justify-center">
                     {
                         product.attributes[1].options.map(size => (
@@ -237,7 +244,7 @@ export const SliderImg = ({ product, variantes }: Props) => {
                                 <MdOutlineAddShoppingCart
                                     className=" w-8 h-8 text-black" />
                             </button>
-                            <Link className= " flex justify-center align-middle items-center mb-4 text-blue-600 underline" href={"/?showmenu=true"}>Ver Carrito</Link>
+                            <Link className= " mx-auto w-fit rounded-full  p-1 flex justify-center border-2 border-rose-800 align-middle items-center mb-4  text-rose-800 underline" href={"/?showmenu=true"}>Ver Carrito</Link>
                             
                             
                         </div>

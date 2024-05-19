@@ -11,7 +11,7 @@ export const TopMenu = () => {
     const openMenu = useStore(state => state.openMenu)
     const itemsInCart = CartState(state => state.CartItems)
     return (
-        <nav className=" justify-center  bg-gradient-radial from-teal-500 to-teal-600">
+        <nav className=" justify-center  bg-gradient-radial from-teal-100 to-teal-200 shadow-lg">
             
             <div className=" flex w-full sm:w-[70%] sm:mx-auto items-center  justify-between " >
                 <div className="  ">
@@ -22,9 +22,9 @@ export const TopMenu = () => {
                 </div>
                 <div>
                     <Link className=" items-center p-1 ml-10 transition-all hover:text-6xl hover:text-rose-500" href="/">
-                        <span className={`${Logo2Font.className} antialiased font-bold text-3xl `}>BIM</span>
+                        <span className={`${Logo2Font.className} antialiased font-bold text-xl `}>BIM</span>
                         <span className="text-4xl"> | </span>
-                        <span className={`${Logo1Font.className} antialiased font-bold text-3xl`}>YOU</span>
+                        <span className={`${Logo1Font.className} antialiased font-bold text-xl`}>YOU</span>
                     </Link>
 
                 </div>

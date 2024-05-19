@@ -58,7 +58,6 @@ export const ProductGridItem = ({ product, id }: Props) => {
                 
             </div>
       </div>
- 
       </div>
       <div>
       </div>

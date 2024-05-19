@@ -38,12 +38,15 @@ export const SliderImg = ({ product, variantes }: Props) => {
     const [touchEnd, settouchEnd] = useState(0)
     const [popup, setpopup] = useState('hidden')
     const [mensajePopup, setmensajePopup] = useState('')
-
+    
 
     const variantesList = (name: string) => {
         const varianFiltered = variantes.filter(element => element.attributes[1].option === name)
         setVariantes(varianFiltered)
     }
+    useEffect(() => {
+        setVariantes(variantes.filter(element => element.attributes[1].option === element.attributes[1].option[0]))
+    }, [variantes])
 
     const handlePopup = () => {
 
@@ -59,11 +62,6 @@ export const SliderImg = ({ product, variantes }: Props) => {
         }
 
     }
-
-    useEffect(() => {
-        setVariantes(variantes.filter(element => element.attributes[1].option === element.attributes[1].option[0]))
-    }, [variantes])
-
 
     const position = (num: number, dir: string) => {
         const numeros = Variantes!.length
@@ -103,6 +101,7 @@ export const SliderImg = ({ product, variantes }: Props) => {
             }
         }
     }
+    
 
     return (
         <div>

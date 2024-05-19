@@ -346,7 +346,7 @@ export const Checkout = () => {
                     <h3>Metodo de pago:</h3>
                     <h3 className=" ml-2 ">Contra entrega, paga al recibir</h3>
                 </div>
-                <form className=" h-[90%]" onSubmit={handleSubmit(submit)}>
+                <form className=" pb-3" onSubmit={handleSubmit(submit)}>
                     <div className=" m-3 mt-5 w-full text-center">
                         <label htmlFor="first_name"></label>
                         <input required className=" h-auto w-[70%] text-center rounded-md p-2" placeholder="Nombres" type="text" name="first_name" onChange={handleBillingInput} />
@@ -440,7 +440,7 @@ export const Checkout = () => {
                         <button
                             type="submit"
 
-                            className=" flex justify-center font-extrabold text-xl mx-auto items-center px-2 py-3 bg-rose-300 hover:bg-rose-400 border-2 rounded-full"
+                            className=" flex justify-center font-extrabold text-xl mx-auto items-center px-2 py-3 mb-7 bg-rose-300 hover:bg-rose-400 border-2 rounded-full"
                         >Finalizar Pedido
                             <MdOutlineFactCheck
                                 className=" w-7 h-7 text-black ml-2" />

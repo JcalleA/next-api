@@ -119,7 +119,7 @@ export const Cart = () => {
 
     return (
         <div className="bg-gradient-to-r from-teal-500 to-cyan-600  rounded-md ">
-            <div className=" mt-11 h-[60vh]  p-2 overflow-hidden rounded-md overflow-y-scroll  shadow-[inset_0_0_7px_0_rgba(0,0,0,0.05)] shadow-black">
+            <div className=" mt-11 h-[55vh]  p-2 overflow-hidden rounded-md overflow-y-scroll  shadow-[inset_0_0_7px_0_rgba(0,0,0,0.05)] shadow-black">
                 {
                     Data && (
                         Data.map((product: Variation) => (

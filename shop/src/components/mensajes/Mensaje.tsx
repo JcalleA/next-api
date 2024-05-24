@@ -7,11 +7,12 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import { register } from 'swiper/element/bundle';
 // register Swiper custom elements
-import { CountdownTimer } from "nextjs-countdown-timer";
+
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
+import { Countdown } from "../countdown/Countdown";
 
 export const Mensaje = () => {
   register();
@@ -63,13 +64,7 @@ export const Mensaje = () => {
         
       </Swiper>
       <div>
-			<h1>React Countdown Timer</h1>
-			<CountdownTimer
-          initialSeconds={60} 
-          onTimerEnd={function (): void {
-            throw new Error("Function not implemented.");
-          } }				
-			/>
+			<Countdown></Countdown>
 		</div>
       </div>
   )

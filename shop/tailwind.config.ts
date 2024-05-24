@@ -13,8 +13,20 @@ const config: Config = {
         "pulse-fade-in": "pulse-fade-in 0.6s ease-out",
         "blurred-fade-in": "blurred-fade-in 0.4s ease-in-out",
         "rotate-in": "rotate-in 0.6s ease-out",
+        "zoom-out": "zoom-out 0.6s infinite "
       },
       keyframes:{
+
+        "zoom-out": {
+          "0%": {
+            "opacity": "1",
+            "transform": "scale(1)"
+          },
+          "100%": {
+            "opacity": "0",
+            "transform": "scale(.5)"
+          }
+        },
 
         "cart_saltar":{
           "0%":{"transform": "rotate(5deg)"},

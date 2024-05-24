@@ -49,11 +49,15 @@ export const ProductGridItem = ({ product, id }: Props) => {
           </Link>
         </div>
         <div className="p-6">
-                <h2 className="text-lg font-semibold text-gray-800">{product.name}</h2>
+                <h2 className="text-lg text-center font-semibold text-gray-800">{product.name}</h2>
+                <div className=" flex justify-around">
+                <span className="block text-pink-800  line-through text-lg mt-4">$ {new Intl.NumberFormat().format(30000)}</span>
                 <span className="block text-pink-500 text-lg mt-4">$ {new Intl.NumberFormat().format(parseInt(product.price))}</span>
+                </div>
+                
+                
                 <div className="  text-center">
-                <Link className=" w-[80%] shadow-lg mt-4 inline-block bg-pink-500 text-white py-2 px-4 rounded-full text-sm hover:bg-pink-600" href={`/?id=${id}&showmodal=true`}><MdOutlineAddShoppingCart
-                                    className=" mx-auto w-8 h-8 text-black" /></Link>
+                <Link className=" w-[80%] shadow-lg mt-4 inline-block bg-pink-500 text-white py-2 px-4 rounded-full text-lg hover:bg-pink-600" href={`/?id=${id}&showmodal=true`}>Ver</Link>
                 </div>
                 
             </div>

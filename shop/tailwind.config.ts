@@ -13,7 +13,7 @@ const config: Config = {
         "pulse-fade-in": "pulse-fade-in 0.6s ease-out",
         "blurred-fade-in": "blurred-fade-in 0.4s ease-in-out",
         "rotate-in": "rotate-in 0.6s ease-out",
-        "zoom-out": "zoom-out 0.6s infinite "
+        "zoom-out": "zoom-out 1s infinite "
       },
       keyframes:{
 
@@ -23,7 +23,7 @@ const config: Config = {
             "transform": "scale(1)"
           },
           "100%": {
-            "opacity": "0",
+            "opacity": "0.4",
             "transform": "scale(.5)"
           }
         },

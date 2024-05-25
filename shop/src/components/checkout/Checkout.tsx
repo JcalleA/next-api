@@ -440,7 +440,7 @@ export const Checkout = () => {
                         <button
                             type="submit"
 
-                            className=" flex justify-center font-extrabold text-xl mx-auto items-center px-2 py-3 mb-7 bg-rose-300 hover:bg-rose-400 border-2 rounded-full"
+                            className=" flex justify-center shadow-md shadow-black font-extrabold text-xl mx-auto items-center px-2 py-3 mb-7 bg-rose-300 hover:bg-rose-400 border-2 border-black rounded-full"
                         >Finalizar Pedido
                             <MdOutlineFactCheck
                                 className=" w-7 h-7 text-black ml-2" />

@@ -47,6 +47,11 @@ export const Cart = () => {
         if (products) {
             const listaParsed = JSON.parse(products)
             setData(listaParsed)
+            if (listaParsed!=undefined && listaParsed.length!=0) {
+                setmensajeCart('')
+            }else{
+                setmensajeCart('Carrito Vacio---')
+            }
 
             let sumaProducts = 0
             for (let index = 0; index < listaParsed.length; index++) {
@@ -64,12 +69,12 @@ export const Cart = () => {
     useEffect(() => {
 
         if (Data?.length != undefined) {
-            setmensajeCart('')
+            
             setCartLoad(false)
             setCartItems(Data.length)
         } else {
             setEnvio(0)
-            setmensajeCart('Carrito Vacio---')
+            
             setCartLoad(false)
         }
     }, [Data])
@@ -181,19 +186,19 @@ export const Cart = () => {
                             <div className=" w-full items-center   text-center text-sm sm:text-lg font-semibold">
                                 <table className=" w-[100%] mx-auto mt-2 table-auto">
                                     <thead className="border-2 border-separate border-spacing-2">
-                                        <tr className="">
+                                        <tr className=" bg-gray-500">
                                             <th className="border-2 border-rose-300">Unidad</th>
                                             <th className="border-2 border-rose-300">Valor</th>
-                                            <th className="border-2 border-rose-300">Descuento</th>
+                                            <th className="border-2  border-rose-300">Descuento</th>
                                             <th className="border-2 border-rose-300">Envio</th>
 
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
+                                        <tr className=" bg-green-400">
                                             <td className="border-2 border-rose-300">{Data!.length}</td>
                                             <td className="border-2 border-rose-300">${new Intl.NumberFormat().format(TotalPedido)}</td>
-                                            <td className="border-2 border-rose-300">{
+                                            <td className="border-2 text-red-700 border-rose-300">{
                                                 Descuento === 0 && (
                                                     <span>0</span>
                                                 )
@@ -240,7 +245,7 @@ export const Cart = () => {
                             </Link>
 
                             <span
-                                className=" text-xl mr-4 bg-green-400 shadow-lg shadow-black border-2 border-black shadow-lg rounded-lg px-2"
+                                className=" text-xl mr-4 bg-green-400  shadow-black border-2 border-black shadow-lg rounded-lg px-2"
                             >Total
                                 <br />
                                 ${new Intl.NumberFormat().format(TotalPedido - Descuento + Envio)}

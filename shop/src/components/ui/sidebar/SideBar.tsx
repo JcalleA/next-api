@@ -59,6 +59,7 @@ export const SideBar =  () => {
                 />
                         <Cart />
             </div>
+            
         </div >
     )
 }

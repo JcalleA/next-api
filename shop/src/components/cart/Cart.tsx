@@ -122,6 +122,7 @@ export const Cart = () => {
 
     return (
         <div className="bg-gradient-to-r from-teal-500 to-cyan-600  rounded-md ">
+            
             <div className=" mt-11 h-[55vh]  p-2 overflow-hidden rounded-md overflow-y-scroll  shadow-[inset_0_0_7px_0_rgba(0,0,0,0.05)] shadow-black">
                 {
                     Data && (
@@ -184,21 +185,21 @@ export const Cart = () => {
                     <div className=" ">
                         <div className=" mt-2 flex justify-between pr-3 text-center text-lg font-semibold">
                             <div className=" w-full items-center   text-center text-sm sm:text-lg font-semibold">
-                                <table className=" w-[100%] mx-auto mt-2 table-auto">
+                                <table className=" w-[100%] mx-auto mt-2 table-auto text-lg font-semibold">
                                     <thead className="border-2 border-separate border-spacing-2">
                                         <tr className=" bg-gray-500">
-                                            <th className="border-2 border-rose-300">Unidad</th>
-                                            <th className="border-2 border-rose-300">Valor</th>
-                                            <th className="border-2  border-rose-300">Descuento</th>
-                                            <th className="border-2 border-rose-300">Envio</th>
+                                            <th className="border-2 border-black">Unidad</th>
+                                            <th className="border-2 border-black">Valor</th>
+                                            <th className="border-2  border-black">Descuento</th>
+                                            <th className="border-2 border-black">Envio</th>
 
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr className=" bg-green-400">
-                                            <td className="border-2 border-rose-300">{Data!.length}</td>
-                                            <td className="border-2 border-rose-300">${new Intl.NumberFormat().format(TotalPedido)}</td>
-                                            <td className="border-2 text-red-700 border-rose-300">{
+                                            <td className="border-2 border-black">{Data!.length}</td>
+                                            <td className="border-2 border-black">${new Intl.NumberFormat().format(TotalPedido)}</td>
+                                            <td className="border-2 text-red-700 border-black">{
                                                 Descuento === 0 && (
                                                     <span>0</span>
                                                 )
@@ -212,7 +213,7 @@ export const Cart = () => {
                                                 }</td>
                                             {
                                                 Envio === 0 &&
-                                                <td className="border-2 border-rose-300">Grtais</td>
+                                                <td className="border-2 border-black">Grtais</td>
                                             }
                                             {
                                                 Envio != 0 &&

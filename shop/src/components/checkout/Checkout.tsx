@@ -306,18 +306,18 @@ export const Checkout = () => {
                     <table className=" w-[75%] mx-auto mt-2 table-auto">
                         <thead className="border-2 border-separate border-spacing-2">
                             <tr className="">
-                                <th className="border-2">Unidad</th>
-                                <th className="border-2">Valor</th>
-                                <th className="border-2">Descuento</th>
-                                <th className="border-2">Envio</th>
-                                <th className="border-2">Total</th>
+                                <th className="border-2 border-black">Unidad</th>
+                                <th className="border-2 border-black">Valor</th>
+                                <th className="border-2 border-black">Descuento</th>
+                                <th className="border-2 border-black">Envio</th>
+                                <th className="border-2 border-black">Total</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td className="border-2 text-sm bg-green-300 font-semibold   sm:text-xl sm:font-extrabold ">{datos!.length}</td>
-                                <td className="border-2 text-sm bg-green-300 font-semibold   sm:text-xl sm:font-extrabold ">${new Intl.NumberFormat().format(TotalPedido)}</td>
-                                <td className="border-2 text-sm bg-green-300 font-semibold   sm:text-xl sm:font-extrabold  text-red-600">{
+                                <td className="border-2 border-black text-sm bg-green-300 font-semibold   sm:text-xl sm:font-extrabold ">{datos!.length}</td>
+                                <td className="border-2 border-black text-sm bg-green-300 font-semibold   sm:text-xl sm:font-extrabold ">${new Intl.NumberFormat().format(TotalPedido)}</td>
+                                <td className="border-2 border-black text-sm bg-green-300 font-semibold   sm:text-xl sm:font-extrabold  text-red-600">{
                                     Descuento === 0 && (
                                         <span>0</span>
                                     )
@@ -331,20 +331,20 @@ export const Checkout = () => {
                                     }</td>
                                 {
                                     Envio === 0 &&
-                                    <td className="border-2 text-sm bg-green-300 font-semibold   sm:text-xl sm:font-extrabold ">Grtais</td>
+                                    <td className="border-2 border-black text-sm bg-green-300 font-semibold   sm:text-xl sm:font-extrabold ">Grtais</td>
                                 }
                                 {
                                     Envio != 0 &&
-                                    <td className="border-2">{Envio}</td>
+                                    <td className="border-2 border-black">{Envio}</td>
                                 }
-                                <td className="border-2 text-sm bg-green-600 font-semibold   sm:text-xl sm:font-extrabold ">${new Intl.NumberFormat().format(TotalPedido - Descuento + Envio)}</td>
+                                <td className="border-2 border-black text-sm bg-green-600 font-semibold   sm:text-xl sm:font-extrabold ">${new Intl.NumberFormat().format(TotalPedido - Descuento + Envio)}</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-                <div className=" flex text-ml mt-2 w-[100%] text-center mx-auto text-lg font-bold justify-center">
-                    <h3>Metodo de pago:</h3>
-                    <h3 className=" ml-2 ">Contra entrega, paga al recibir</h3>
+                <div className=" flex  mt-2 w-[100%] leading-4 align-middle items-center text-center mx-auto  font-bold justify-center">
+                    <span>Metodo de pago:</span>
+                    <span className=" ml-2 ">Contra entrega <br></br>paga al recibir</span>
                 </div>
                 <form className=" pb-3" onSubmit={handleSubmit(submit)}>
                     <div className=" m-3 mt-5 w-full text-center">
@@ -393,7 +393,7 @@ export const Checkout = () => {
                             className=" h-auto w-[70%] text-center rounded-md p-2"
                             required
                             type="text"
-                            placeholder="Carrera... #.."
+                            placeholder="Direccion Carrera... #calle.."
                             name="address_1"
                             onChange={handleBillingInput} />
                     </div>

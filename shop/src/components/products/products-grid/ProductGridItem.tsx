@@ -20,10 +20,10 @@ export const ProductGridItem = ({ product, id }: Props) => {
     <div className=" w-[100%] h-full">
       <div className=" mx-auto w-[90%] h-full">
         <div className=" rounded-md h-full shadow-md shadow-black bg-slate-300 overflow-hidden ">
-          <div className=" overflow-hidden relative shadow-md shadow-black mx-auto w-[100%] h-1/2 sm:w-[90%] object-fill  rounded-lg">
+          <div className=" overflow-hidden relative  mx-auto w-[100%] sm:w-[90%] object-fill  rounded-lg">
             <span
               className={clsx(
-                " bg-red-600 h-[50px] w-[120px] content-end text-center box absolute top-[-17px] left-[-50px] transform -rotate-45 text-sm font-extrabold "
+                " bg-red-600 h-[50px] w-[120px] content-end text-center box absolute top-[-17px] left-[-50px] transform -rotate-45 text-sm font-extrabold"
               )}
             >
               Oferta
@@ -32,9 +32,10 @@ export const ProductGridItem = ({ product, id }: Props) => {
               <Image
                 src={`${displayImage}`}
                 alt={product.name}
-                className=" w-full object-cover"
-                width={600}
-                height={600}
+                className=" w-full object-fill"
+                width={700}
+                height={700}
+                
                 onMouseEnter={() => setdiplayImage(product.images[1].src)}
                 onMouseLeave={() => setdiplayImage(product.images[0].src)}
                 onTouchStart={() => setdiplayImage(product.images[1].src)}

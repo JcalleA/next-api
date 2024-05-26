@@ -163,30 +163,37 @@ export const SliderImg = ({ product, variantes }: Props) => {
           <div>
             <span className=" text-yellow-400 font-bold text-xl ">★★★★★</span>
           </div>
-          <div className=" text-center m-2">
-            {Variantes && Variantes[color].regular_price && (
-              <span className=" rounded-full p-1 m-2 border-2 border-red-600 line-through text-red-600 font-bold text-xl ">
-                ${" "}
-                {new Intl.NumberFormat().format(
-                  parseInt(Variantes![color].regular_price)
-                )}
-              </span>
-            )}
+          <div className=" flex justify-center">
+            <div className=" text-center m-2">
+              {Variantes && Variantes[color].regular_price && (
+                <span className=" rounded-full p-1 m-2 border-2 border-red-600 line-through text-red-600 font-bold text-xl ">
+                  ${" "}
+                  {new Intl.NumberFormat().format(
+                    parseInt(Variantes![color].regular_price)
+                  )}
+                </span>
+              )}
+            </div>
+            <div className=" text-center m-2">
+              {Variantes && Variantes[color].regular_price && (
+                <span className=" px-2 text-white rounded-full bg-green-700 border-2 border-black p-1 m-2 font-bold text-xl ">
+                  ${" "}
+                  {new Intl.NumberFormat().format(
+                    parseInt(Variantes![color].sale_price)
+                  )}
+                </span>
+              )}
+            </div>
           </div>
-          <div className=" text-center m-2">
-            {Variantes && Variantes[color].regular_price && (
-              <span className=" px-2 text-white rounded-full bg-green-700 p-1 m-2 font-bold text-xl ">
-                ${" "}
-                {new Intl.NumberFormat().format(
-                  parseInt(Variantes![color].sale_price)
-                )}
-              </span>
-            )}
-          </div>
+
         </div>
+        <div className=" items-center text-center">
         <h4 className=" text-center text-xl font-semibold">
-          Selecciona una Color
+          Selecciona un Color
         </h4>
+        <span className=" text-sm ">{Variantes![color!].name}</span>
+        </div>
+        
         <div
           className=" flex w-[100%] mx-auto justify-center mt-2"
           onTouchStart={(e) => {
@@ -244,7 +251,7 @@ export const SliderImg = ({ product, variantes }: Props) => {
           ))}
         </div>
       </div>
-      
+
       <div className="font-bold text-xl flex align-middle my-auto mt-3">
         {Variantes && (
           <div className=" w-full justify-center">
@@ -262,7 +269,7 @@ export const SliderImg = ({ product, variantes }: Props) => {
             </div>
             <button
               className={clsx(
-                " flex mx-auto align-middle my-auto px-4 py-2 mt-4 bg-rose-300 hover:bg-rose-400 border-2 border-black shadow-lg shadow-black mb-3 rounded-full",
+                " flex mx-auto align-middle my-auto px-4 leading-5 py-2 mt-4 bg-rose-300 hover:bg-rose-400 border-2 border-black shadow-lg shadow-black mb-3 rounded-full",
                 { " hidden": Variantes[color].stock_quantity === 0 }
               )}
               onClick={() => {

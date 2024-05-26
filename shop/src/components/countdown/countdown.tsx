@@ -44,7 +44,7 @@ export const Countdown = () => {
         >{23 - Time.hour}</span>
       </div>
       <div className=" text-center w-[30%] p-2 bg-red-400 border-2 border-black shadow-md shadow-black rounded-md">
-        <span>Minutos:</span>
+        <span>Min:</span>
         <br></br>
         <span className={
           clsx(" font-extrabold text-2xl",
@@ -53,7 +53,7 @@ export const Countdown = () => {
         >{59 - Time.min}</span>
       </div>
       <div className=" text-center w-[30%] p-2 bg-red-400 border-2 border-black shadow-md shadow-black rounded-md">
-        <span className=" ">Segundos:</span>
+        <span className=" ">Seg:</span>
         <br></br>
         <span className=" font-extrabold animate-zoom-out text-2xl">
           {59 - Time.sec}

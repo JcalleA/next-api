@@ -7,12 +7,12 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import { register } from 'swiper/element/bundle';
 // register Swiper custom elements
-
+import { Countdown } from "../countdown/Countdown";
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-import { Countdown } from "../countdown/Countdown";
+
 
 export const Mensaje = () => {
   register();

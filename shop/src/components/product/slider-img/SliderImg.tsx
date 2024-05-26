@@ -191,7 +191,11 @@ export const SliderImg = ({ product, variantes }: Props) => {
         <h4 className=" text-center text-xl font-semibold">
           Selecciona un Color
         </h4>
-        <span className=" text-sm ">{Variantes![color!].name}</span>
+        {
+          Variantes && Variantes![color!].name &&
+          <span className=" text-sm ">{Variantes![color!].name}</span>
+        }
+        
         </div>
         
         <div

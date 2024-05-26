@@ -99,16 +99,16 @@ export const SliderImg = ({ product, variantes }: Props) => {
   };
 
   return (
-    <div>
-      <div>
-        <div className="   relative mt-3">
+    <div className="  h-screen ">
+      <div className=" h-screen">
+        <div className=" h[60vh] mt-10 relative">
           <FaCircleArrowLeft
             className=" text-rose-300 w-7 h-7 absolute my-auto inset-y-0 z-10"
             onClick={() => position(-1, "izq")}
           />
           {Variantes &&
             Variantes.map((elemen) => (
-              <div className=" relative " key={Variantes.indexOf(elemen)}>
+              <div className="" key={Variantes.indexOf(elemen)}>
                 {elemen.stock_quantity === 0 && (
                   <p
                     className={clsx(
@@ -119,7 +119,7 @@ export const SliderImg = ({ product, variantes }: Props) => {
                     Sin Stock
                   </p>
                 )}
-                <div className=" overflow-hidden relative mx-auto w-[90%] sm:w-[70%] object-fill">
+                <div className=" overflow-hidden relative mx-auto w-[80%] sm:w-[70%] object-fill">
                   <span
                     className={clsx(
                       " bg-red-600 h-20 w-40 content-end text-center box absolute top-[-20px] left-[-50px] transform -rotate-45 text-xl font-extrabold ",
@@ -155,150 +155,150 @@ export const SliderImg = ({ product, variantes }: Props) => {
             className="  text-rose-300 w-7 h-7 absolute my-auto inset-y-0 right-0 z-10"
             onClick={() => position(1, "der")}
           />
-        </div>
-        <div className=" text-center m-1">
-          <div>
-            <h2 className=" font-bold">{product.name}</h2>
-          </div>
-          <div>
-            <span className=" text-yellow-400 font-bold text-xl ">★★★★★</span>
-          </div>
-          <div className=" flex justify-center">
-            <div className=" text-center m-2">
-              {Variantes && Variantes[color].regular_price && (
-                <span className=" rounded-full p-1 m-2 border-2 border-red-600 line-through text-red-600 font-bold text-xl ">
-                  ${" "}
-                  {new Intl.NumberFormat().format(
-                    parseInt(Variantes![color].regular_price)
-                  )}
-                </span>
-              )}
+          <div className=" text-center">
+            <div>
+              <h2 className=" font-bold">{product.name}</h2>
             </div>
-            <div className=" text-center m-2">
-              {Variantes && Variantes[color].regular_price && (
-                <span className=" px-2 text-white rounded-full bg-green-700 border-2 border-black p-1 m-2 font-bold text-xl ">
-                  ${" "}
-                  {new Intl.NumberFormat().format(
-                    parseInt(Variantes![color].sale_price)
-                  )}
-                </span>
-              )}
+            <div>
+              <span className=" text-yellow-400 font-bold text-xl ">★★★★★</span>
             </div>
-          </div>
-
-        </div>
-        <div className=" items-center text-center">
-        <h4 className=" text-center text-xl font-semibold">
-          Selecciona un Color
-        </h4>
-        {
-          Variantes && Variantes![color!].name &&
-          <span className=" text-sm ">{Variantes![color!].name}</span>
-        }
-        
-        </div>
-        
-        <div
-          className=" flex w-[100%] mx-auto justify-center mt-2"
-          onTouchStart={(e) => {
-            settouchStart(e.touches[0].clientX);
-          }}
-          onTouchMove={(e) => {
-            settouchEnd(e.touches[0].clientX);
-            handleChangeImg(touchStart, touchEnd);
-          }}
-        >
-          {Variantes &&
-            Variantes.map((element) => (
-              <Image
-                key={Variantes!.indexOf(element)}
-                className={clsx(
-                  "  w-[18%] rounded-lg  object-cover ",
-                  {
-                    " opacity-100 w-[36%] border-2 border-rose-300 animate-pulse-fade-in":
-                      Variantes.indexOf(element) == color,
-                  },
-                  { " opacity-40  ": Variantes!.indexOf(element) != color },
-                  { " grayscale": element.stock_quantity === 0 }
+            <div className=" flex justify-center">
+              <div className=" text-center ">
+                {Variantes && Variantes[color].regular_price && (
+                  <span className=" rounded-full p-1 m-2 border-2 border-red-600 line-through text-red-600 font-bold text-xl ">
+                    ${" "}
+                    {new Intl.NumberFormat().format(
+                      parseInt(Variantes![color].regular_price)
+                    )}
+                  </span>
                 )}
-                src={element.image.src}
-                alt={element.image.alt}
-                width={300}
-                height={300}
-                onMouseEnter={() => {
-                  setcolor(Variantes!.indexOf(element));
-                }}
-              />
-            ))}
-        </div>
-      </div>
-
-      <div className=" my-2 text-xl font-bold mt-3 text-center">
-        <h4 className=" font-semibold">Selecciona una Talla</h4>
-        <div className=" flex mt-3 w-full justify-center">
-          {product.attributes[1].options.map((size) => (
-            <button
-              className={clsx(
-                " rounded-full border-2 border-black shadow-lg shadow-black px-5 py-2 mx-4 ",
-                {
-                  "bg-rose-300 hover:bg-rose-400": Talla === size,
-                }
-              )}
-              key={size}
-              onClick={() => {
-                variantesList(size);
-                setTalla(size);
-              }}
-            >
-              {size}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      <div className="font-bold text-xl flex align-middle my-auto mt-3">
-        {Variantes && (
-          <div className=" w-full justify-center">
-            <button
-              className={clsx(
-                " flex mx-auto text-black align-middle my-auto px-4 py-2 bg-gray-300 border-2 mb-3 rounded-full",
-                { " hidden": Variantes[color].stock_quantity != 0 }
-              )}
-            >
-              Sin Stock
-              <MdOutlineAddShoppingCart className=" w-8 h-8 text-black" />
-            </button>
-            <div className={popup} onClick={() => setpopup("hidden")}>
-              <span>{mensajePopup}</span>
-            </div>
-            <button
-              className={clsx(
-                " flex mx-auto align-middle my-auto px-4 leading-5 py-2 mt-4 bg-rose-300 hover:bg-rose-400 border-2 border-black shadow-lg shadow-black mb-3 rounded-full",
-                { " hidden": Variantes[color].stock_quantity === 0 }
-              )}
-              onClick={() => {
-                addToCartEvent();
-                setItemLocal();
-                setCartLoad(true);
-                handlePopup();
-              }}
-            >
-              <div>
-                <span>Agregar Al Carrito</span>
-                <br></br>
-                <span className=" text-sm">{Variantes![color!].name}</span>
               </div>
-
-              <MdOutlineAddShoppingCart className=" w-8 h-8 text-black" />
-            </button>
-            <Link
-              className=" mx-auto w-fit rounded-full  p-1 flex justify-center border-2 border-rose-800 align-middle items-center mb-4  text-rose-800 underline"
-              href={"/?showmenu=true"}
-            >
-              Ver Carrito
-            </Link>
+              <div className=" text-center ">
+                {Variantes && Variantes[color].regular_price && (
+                  <span className=" px-2 text-white rounded-full bg-green-700 border-2 border-black p-1 m-2 font-bold text-xl ">
+                    ${" "}
+                    {new Intl.NumberFormat().format(
+                      parseInt(Variantes![color].sale_price)
+                    )}
+                  </span>
+                )}
+              </div>
+            </div>
           </div>
-        )}
+        </div>
+        <div className=" h-[40vh]">
+          
+          <div className=" items-center text-center mt-1">
+            <h4 className=" text-center text-xl font-semibold">
+              Selecciona un Color
+            </h4>
+            {
+              Variantes && Variantes![color!].name &&
+              <span className=" text-sm m-0">{Variantes![color!].name}</span>
+            }
+          </div>
+
+          <div
+            className=" flex w-[100%] h-[25%] mx-auto justify-center mt-1"
+            onTouchStart={(e) => {
+              settouchStart(e.touches[0].clientX);
+            }}
+            onTouchMove={(e) => {
+              settouchEnd(e.touches[0].clientX);
+              handleChangeImg(touchStart, touchEnd);
+            }}
+          >
+            {Variantes &&
+              Variantes.map((element) => (
+                <Image
+                  key={Variantes!.indexOf(element)}
+                  className={clsx(
+                    "  w-[18%] rounded-lg  object-cover ",
+                    {
+                      " opacity-100 w-[36%] border-2 border-rose-300 animate-pulse-fade-in":
+                        Variantes.indexOf(element) == color,
+                    },
+                    { " opacity-40  ": Variantes!.indexOf(element) != color },
+                    { " grayscale": element.stock_quantity === 0 }
+                  )}
+                  src={element.image.src}
+                  alt={element.image.alt}
+                  width={300}
+                  height={300}
+                  onMouseEnter={() => {
+                    setcolor(Variantes!.indexOf(element));
+                  }}
+                />
+              ))}
+          </div>
+          <div className=" my-1 text-xl font-bold mt-1 text-center">
+            <h4 className=" font-semibold">Selecciona una Talla</h4>
+            <div className=" flex mt-1 w-full justify-center">
+              {product.attributes[1].options.map((size) => (
+                <button
+                  className={clsx(
+                    " rounded-full border-2 border-black shadow-lg shadow-black px-5 py-2 mx-4 ",
+                    {
+                      "bg-rose-300 hover:bg-rose-400": Talla === size,
+                    }
+                  )}
+                  key={size}
+                  onClick={() => {
+                    variantesList(size);
+                    setTalla(size);
+                  }}
+                >
+                  {size}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="font-bold text-xl flex align-middle my-auto mt-1">
+            {Variantes && (
+              <div className=" w-full justify-center">
+                <button
+                  className={clsx(
+                    " flex mx-auto text-black align-middle my-auto px-4 py-2 bg-gray-300 border-2 mb-3 rounded-full",
+                    { " hidden": Variantes[color].stock_quantity != 0 }
+                  )}
+                >
+                  Sin Stock
+                  <MdOutlineAddShoppingCart className=" w-8 h-8 text-black" />
+                </button>
+                <div className={popup} onClick={() => setpopup("hidden")}>
+                  <span>{mensajePopup}</span>
+                </div>
+                <button
+                  className={clsx(
+                    " flex mx-auto align-middle my-auto px-4 leading-5 py-2 mt-1 bg-rose-300 hover:bg-rose-400 border-2 border-black shadow-lg shadow-black mb-3 rounded-full",
+                    { " hidden": Variantes[color].stock_quantity === 0 }
+                  )}
+                  onClick={() => {
+                    addToCartEvent();
+                    setItemLocal();
+                    setCartLoad(true);
+                    handlePopup();
+                  }}
+                >
+                  <div>
+                    <span>Agregar Al Carrito</span>
+                    <br></br>
+                    <span className=" text-sm">{Variantes![color!].name}</span>
+                  </div>
+
+                  <MdOutlineAddShoppingCart className=" w-8 h-8 text-black" />
+                </button>
+                <Link
+                  className=" mx-auto w-fit rounded-full  p-1 flex justify-center border-2 border-rose-800 align-middle items-center mb-4  text-rose-800 underline"
+                  href={"/?showmenu=true"}
+                >
+                  Ver Carrito
+                </Link>
+              </div>
+            )}
+          </div>
+        </div>
       </div>
     </div>
   );

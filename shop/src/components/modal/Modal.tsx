@@ -30,8 +30,8 @@ export const Modal = ({ products, variantes }: Props) => {
 
 
   return (
-    <div className="fixed mt-5 h-[95vh] w-[95vw] rounded-md sm:w-[640px] md:w-[750px] px-4 inset-x-0 inset-y-0  mx-auto my-auto bg-gradient-to-r from-teal-500 to-cyan-600 z-20 overflow-y-scroll no-scrollbar  overflow-x-scroll transform transition-all">
-      <div className=" rounded-md overflow-hidden ">
+    <div className="fixed  h-[100vh] w-[100vw] top-0 rounded-md sm:w-[640px] md:w-[750px] px-4 inset-x-0 inset-y-0  mx-auto my-auto bg-gradient-to-r from-teal-500 to-cyan-600 z-20 overflow-y-scroll no-scrollbar  overflow-x-scroll transform transition-all">
+      <div className=" rounded-md h-screen">
         <LiaWindowCloseSolid
           className=" text-red-300 absolute w-10 h-10 z-30 right-0 cursor-pointer"
           onClick={router.back}

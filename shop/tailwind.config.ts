@@ -13,10 +13,19 @@ const config: Config = {
         "pulse-fade-in": "pulse-fade-in 0.6s ease-out",
         "blurred-fade-in": "blurred-fade-in 0.4s ease-in-out",
         "rotate-in": "rotate-in 0.6s ease-out",
-        "zoom-out": "zoom-out 1s infinite "
+        "zoom-out": "zoom-out 1s infinite ",
+        "transitionToLefft":"transitionToLefft 8s ease-in-out"
       },
       keyframes:{
 
+        "transitionToLefft":{
+          "0%": {
+            "transform": "translateX(50%)"
+          },
+          "100%": {
+            "transform": "translateX(-100%)"
+          },
+        },
         "zoom-out": {
           "0%": {
             "opacity": "1",

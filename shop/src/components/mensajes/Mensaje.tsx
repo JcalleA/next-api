@@ -62,6 +62,15 @@ export const Mensaje = () => {
         height={768}
         />
         </SwiperSlide>
+        <SwiperSlide>
+          <Image
+        className=" rounded-lg"
+        src={"/imgs/Clientes.png"} 
+        alt={""}
+        width={1366}
+        height={768}
+        />
+        </SwiperSlide>
         
       </Swiper>
       <div>

@@ -1,0 +1,7 @@
+.bgGradient{
+    background: linear-gradient(90deg, rgba(238,171,52,1) 0%, rgba(228,137,236,1) 26%, rgba(255,255,255,1) 51%, rgba(0,0,0,1) 75%, rgba(255,172,215,1) 100%);
+}
+
+.Img_Shadow{
+    filter: drop-shadow(0 3px 10px rgba(0, 0, 0, 0.7));
+}

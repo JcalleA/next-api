@@ -47,9 +47,9 @@ export const Cart = () => {
         if (products) {
             const listaParsed = JSON.parse(products)
             setData(listaParsed)
-            if (listaParsed!=undefined && listaParsed.length!=0) {
+            if (listaParsed != undefined && listaParsed.length != 0) {
                 setmensajeCart('')
-            }else{
+            } else {
                 setmensajeCart('Carrito Vacio---')
             }
 
@@ -69,12 +69,12 @@ export const Cart = () => {
     useEffect(() => {
 
         if (Data?.length != undefined) {
-            
+
             setCartLoad(false)
             setCartItems(Data.length)
         } else {
             setEnvio(0)
-            
+
             setCartLoad(false)
         }
     }, [Data])
@@ -122,49 +122,55 @@ export const Cart = () => {
 
     return (
         <div className="bg-gradient-to-r from-teal-500 to-cyan-600  rounded-md ">
-            
+
             <div className=" mt-11 h-[55vh]  p-2 overflow-hidden rounded-md overflow-y-scroll  shadow-[inset_0_0_7px_0_rgba(0,0,0,0.05)] shadow-black">
                 {
                     Data && (
                         Data.map((product: Variation) => (
-                            <div key={Data.indexOf(product)} className=" p-0 flex items-center align-middle justify-between mt-3 border-2 border-rose-300">
-                                <Image
-                                    className=" rounded-lg object-cover"
-                                    src={product.image.src}
-                                    width={85}
-                                    height={85}
-                                    alt={""} />
-                                <div>
-                                    <span
-                                        className=" inline-block align-middle font-bold text-center"
-                                    >Talla: {product.attributes[1].option}
-                                    </span>
-                                    <br></br>
-                                    <span
-                                        className=" inline-block align-middle font-bold text-center"
-                                    >Color: {product.attributes[0].option}
-                                    </span>
+                            <div className=" border-2 border-rose-300 rounded-md" key={Data.indexOf(product)}>
+                                <div className=" text-center m-0 p-0 font-semibold">
+                                    <h3>{product.product_Name}</h3>
                                 </div>
-                                <div>
-                                    <span
-                                        className="inline-block line-through text-red-700 align-middle text-center font-bold"
-                                    >${new Intl.NumberFormat().format(parseInt(product.regular_price))}
-                                    </span>
-                                    <br></br>
-                                    <span
-                                        className="inline-block  text-white bg-green-700 rounded-lg px-2 align-middle text-center font-bold"
-                                    >${new Intl.NumberFormat().format((((TotalPedido - Descuento) / Data!.length)))}
-                                    </span>
-                                </div>
+                                <div  className=" p-0 flex items-center align-middle justify-between -mt-4">
+                                    <Image
+                                        className=" rounded-lg object-cover"
+                                        src={product.image.src}
+                                        width={85}
+                                        height={85}
+                                        alt={""} />
+                                    <div>
+                                        <span
+                                            className=" inline-block align-middle font-bold text-center"
+                                        >Talla: {product.attributes[1].option}
+                                        </span>
+                                        <br></br>
+                                        <span
+                                            className=" inline-block align-middle font-bold text-center"
+                                        >Color: {product.attributes[0].option}
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <span
+                                            className="inline-block line-through text-red-700 align-middle text-center font-bold"
+                                        >${new Intl.NumberFormat().format(parseInt(product.regular_price))}
+                                        </span>
+                                        <br></br>
+                                        <span
+                                            className="inline-block  text-white bg-green-700 rounded-lg px-2 align-middle text-center font-bold"
+                                        >${new Intl.NumberFormat().format((((TotalPedido - Descuento) / Data!.length)))}
+                                        </span>
+                                    </div>
 
-                                <IoIosCloseCircle
-                                    className="  my-auto w-[10%]  h-full text-rose-300"
-                                    onClick={() => {
-                                        setCartLoad(true)
-                                        delCartItem(Data.indexOf(product))
-                                    }}
-                                />
+                                    <IoIosCloseCircle
+                                        className="  my-auto w-[10%]  h-full text-rose-300"
+                                        onClick={() => {
+                                            setCartLoad(true)
+                                            delCartItem(Data.indexOf(product))
+                                        }}
+                                    />
+                                </div>
                             </div>
+
                         ))
                     )
                 }
@@ -185,9 +191,9 @@ export const Cart = () => {
                     <div className=" ">
                         <div className=" mt-2 flex justify-between pr-3 text-center text-lg font-semibold">
                             <div className=" w-full items-center   text-center text-sm sm:text-lg font-semibold">
-                                <table className=" w-[100%] mx-auto mt-2 table-auto text-lg font-semibold">
+                                <table className=" w-[100%] mx-auto mt-2 table-auto text-lg font-semibold ">
                                     <thead className="border-2 border-separate border-spacing-2">
-                                        <tr className=" bg-gray-500">
+                                        <tr className=" bg-gray-500 ">
                                             <th className="border-2 border-black">Unidad</th>
                                             <th className="border-2 border-black">Valor</th>
                                             <th className="border-2  border-black">Descuento</th>
@@ -198,7 +204,7 @@ export const Cart = () => {
                                     <tbody>
                                         <tr className=" bg-green-400">
                                             <td className="border-2 border-black">{Data!.length}</td>
-                                            <td className="border-2 border-black">${new Intl.NumberFormat().format(TotalPedido)}</td>
+                                            <td className="border-2 line-through border-black">${new Intl.NumberFormat().format(TotalPedido)}</td>
                                             <td className="border-2 text-red-700 border-black">{
                                                 Descuento === 0 && (
                                                     <span>0</span>
@@ -213,7 +219,7 @@ export const Cart = () => {
                                                 }</td>
                                             {
                                                 Envio === 0 &&
-                                                <td className="border-2 border-black">Grtais</td>
+                                                <td className="border-2 border-black">Gratis</td>
                                             }
                                             {
                                                 Envio != 0 &&

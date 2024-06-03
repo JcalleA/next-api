@@ -326,6 +326,7 @@ export interface Variation {
   meta_data: MetaData[];
   _links: Links;
   name:string;
+  product_Name:string;
 }
 
 export interface Self {

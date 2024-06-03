@@ -20,7 +20,7 @@ export const ProductGridItem = ({ product, id }: Props) => {
     <div className=" w-[100%] h-full">
       <div className=" mx-auto w-[90%] h-full">
         <div className=" rounded-md h-full shadow-md shadow-black bg-slate-300 overflow-hidden ">
-          <div className=" overflow-hidden relative h-1/2 mx-auto w-[100%] sm:w-[90%]  rounded-lg">
+          <div className="  overflow-hidden relative  mx-auto w-[100%] sm:w-[90%]  rounded-lg">
             <span
               className={clsx(
                 " bg-red-600 h-[50px] w-[120px] content-end text-center box absolute top-[-17px] left-[-50px] transform -rotate-45 text-sm font-extrabold"
@@ -32,7 +32,7 @@ export const ProductGridItem = ({ product, id }: Props) => {
               <Image
                 src={`${displayImage}`}
                 alt={product.name}
-                className=" w-full object-fill"
+                className=" w-full"
                 width={700}
                 height={700}
                 
@@ -43,9 +43,9 @@ export const ProductGridItem = ({ product, id }: Props) => {
               />
             </Link>
           </div>
-          <div className="h-1/2 grid grid-cols-1 content-between pb-2 ">
+          <div className="h-[30%] grid grid-cols-1 content-between pb-2 ">
             <div>
-              <h2 className="text-lg h-[30%] text-center font-semibold text-gray-800">
+              <h2 className="text-xs  text-center font-semibold text-gray-800">
                 {product.name}
               </h2>
             </div>
@@ -59,7 +59,7 @@ export const ProductGridItem = ({ product, id }: Props) => {
             </div>
             <div className="  text-center  self-end ">
               <Link
-                className=" w-[80%]  shadow-black align-baseline shadow-md border-2 border-black mt-4 inline-block bg-pink-500 text-white py-2 px-4 rounded-full text-lg hover:bg-pink-600"
+                className=" w-[70%]  mb-3 shadow-black align-baseline shadow-md border-2 border-black mt-4 inline-block bg-pink-500 text-white py-1 px-4 rounded-full text-lg hover:bg-pink-600"
                 href={`/?id=${id}&showmodal=true`}
               >
                 Ver

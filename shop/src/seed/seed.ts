@@ -224,7 +224,7 @@ export const Colombia =
                 "Soplaviento",
                 "Talaigua Nuevo",
                 "Tiquisio",
-                "Turbaco",
+                "Turbaco b",
                 "Turban\u00e1",
                 "Villanueva",
                 "Zambrano"

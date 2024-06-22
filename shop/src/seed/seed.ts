@@ -190,7 +190,7 @@ export const Colombia =
                 "Brazuelo de Papayal",
                 "Calamar",
                 "Cantagallo",
-                "Cartagena de Indias",
+                "Cartagena",
                 "Cicuco",
                 "Clemencia",
                 "C\u00f3rdoba",

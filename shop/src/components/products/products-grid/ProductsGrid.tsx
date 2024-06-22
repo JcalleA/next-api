@@ -24,8 +24,16 @@ const ProductsGrid = ({products,variantes}:Props) => {
   const itemsInCart = CartState(state => state.CartItems)
   const isModalOpen = searchParams.get('showmodal')
   const [animation, setanimation] = useState('')
+  const [variations, setvariations] = useState<[Variation[]]>()
 
   useEffect(() => {
+    setvariations(variantes)
+    fetch(`${process.env.NEXT_PUBLIC_APIURL}/products/getvariants`)
+      .then((res) => res.json())
+      .then((res) => {
+        setvariations(res)
+        
+      })
     setproductsList(products)
       
   }, [products])
@@ -63,9 +71,9 @@ const ProductsGrid = ({products,variantes}:Props) => {
 
             }
             {
-              isModalOpen && (
+              isModalOpen && variations &&(
                 <div>
-                  <Modal products={products} variantes={variantes}/>
+                  <Modal products={products} variantes={variations}/>
                 </div>
               )
             }
@@ -73,7 +81,6 @@ const ProductsGrid = ({products,variantes}:Props) => {
         )
       }
     </div>
-
 
   )
 }

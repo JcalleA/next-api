@@ -20,6 +20,7 @@ export const Modal = ({ products, variantes }: Props) => {
   const [dataModal, setdataModal] = useState<Product>()
   const [variations, setvariations] = useState<[Variation[]]>()
   const ModalId = parseInt(searchParams.get('id')!)
+  
 
 
 
